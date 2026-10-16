@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results - AI Learning Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand"><span>AI</span> Learning Assistant</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('notes') }}">Notes</a></li>
+            <li><a href="{{ url_for('quizzes') }}">Quizzes</a></li>
+            <li><a href="{{ url_for('performance') }}">Performance</a></li>
+            <li><a href="{{ url_for('ai_support') }}">AI Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+
+        {% if error %}
+        <div class="error-box">{{ error }}</div>
+        {% endif %}
+
+        <div class="result-hero">
+            <div class="result-score">{{ percentage }}%</div>
+            <p class="result-label">{{ student_label }} &mdash; {{ subject }} Quiz</p>
+        </div>
+
+        <div class="result-stats">
+            <div class="stat-card">
+                <div class="stat-value">{{ total }}</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-card correct">
+                <div class="stat-value">{{ correct_count }}</div>
+                <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat-card incorrect">
+                <div class="stat-value">{{ incorrect_count }}</div>
+                <div class="stat-label">Incorrect</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ percentage }}%</div>
+                <div class="stat-label">Score</div>
+            </div>
+        </div>
+
+        <h2 class="sub-heading">Detailed Results</h2>
+
+        {% for result in results %}
+        {% if result.is_correct %}
+        <div class="result-detail-card correct-answer">
+            <div class="detail-header">
+                <strong>Question {{ loop.index }}</strong>
+                <span class="result-badge badge-correct">&#10004; Correct</span>
+            </div>
+            <p class="result-question-text">{{ result.question }}</p>
+            <p class="result-answer-text">Your answer: <strong>{{ result.submitted }}</strong></p>
+        </div>
+        {% else %}
+        <div class="result-detail-card wrong-answer">
+            <div class="detail-header">
+                <strong>Question {{ loop.index }}</strong>
+                <span class="result-badge badge-incorrect">&#10008; Incorrect</span>
+            </div>
+            <p class="result-question-text">{{ result.question }}</p>
+            <p class="result-answer-text">
+                Your answer: <strong>{{ result.submitted }}</strong>
+                &mdash; Correct answer: <strong class="result-correct-text">{{ result.correct }}</strong>
+            </p>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <div class="result-actions">
+            <a href="{{ url_for('quizzes') }}" class="btn btn-blue btn-sm">Take Another Quiz</a>
+            <a href="{{ url_for('performance') }}" class="btn btn-outline btn-sm">View Performance</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline btn-sm">&larr; Dashboard</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><strong>AI Learning and Study Assistant</strong></p>
+    </footer>
+
+</body>
+</html>

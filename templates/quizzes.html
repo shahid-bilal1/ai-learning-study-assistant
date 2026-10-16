@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - AI Learning Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand"><span>AI</span> Learning Assistant</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('notes') }}">Notes</a></li>
+            <li><a href="{{ url_for('quizzes') }}" class="active">Quizzes</a></li>
+            <li><a href="{{ url_for('performance') }}">Performance</a></li>
+            <li><a href="{{ url_for('ai_support') }}">AI Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title">Knowledge Quiz</h1>
+        <p class="page-subtitle">Test your understanding with multiple-choice questions</p>
+
+        {% if subjects %}
+        <div class="filter-bar">
+            {% if not current_subject %}
+            <a href="{{ url_for('quizzes') }}" class="filter-btn active">All Subjects</a>
+            {% else %}
+            <a href="{{ url_for('quizzes') }}" class="filter-btn">All Subjects</a>
+            {% endif %}
+
+            {% for subject in subjects %}
+            {% if current_subject == subject %}
+            <a href="{{ url_for('quizzes', subject=subject) }}" class="filter-btn active">{{ subject }}</a>
+            {% else %}
+            <a href="{{ url_for('quizzes', subject=subject) }}" class="filter-btn">{{ subject }}</a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if questions %}
+        <form method="POST" action="{{ url_for('submit_quiz') }}" class="quiz-form">
+            <div class="quiz-header-info">
+                <p>Total Questions: {{ questions|length }}</p>
+                <input type="text" name="student_label" class="student-label-input" placeholder="Enter your name (optional)">
+                <input type="hidden" name="quiz_subject" value="{{ current_subject|default('General') }}">
+            </div>
+
+            {% for q in questions %}
+            <div class="question-card">
+                <span class="question-number">{{ loop.index }}</span>
+                <span class="question-topic">{{ q.topic }}</span>
+                <p class="question-text">{{ q.question }}</p>
+                <ul class="options-list">
+                    <li class="option-item">
+                        <label class="option-label">
+                            <input type="radio" name="question_{{ q.question_id }}" value="A">
+                            A. {{ q.option_a }}
+                        </label>
+                    </li>
+                    <li class="option-item">
+                        <label class="option-label">
+                            <input type="radio" name="question_{{ q.question_id }}" value="B">
+                            B. {{ q.option_b }}
+                        </label>
+                    </li>
+                    <li class="option-item">
+                        <label class="option-label">
+                            <input type="radio" name="question_{{ q.question_id }}" value="C">
+                            C. {{ q.option_c }}
+                        </label>
+                    </li>
+                    <li class="option-item">
+                        <label class="option-label">
+                            <input type="radio" name="question_{{ q.question_id }}" value="D">
+                            D. {{ q.option_d }}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
+
+            <div class="quiz-submit-area">
+                <button type="submit" class="btn btn-success btn-lg">Submit Quiz &rarr;</button>
+            </div>
+        </form>
+        {% else %}
+        <div class="no-data-message">
+            <p>No quiz questions available at the moment.</p>
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-30">
+            <a href="{{ url_for('dashboard') }}" class="btn btn-blue btn-sm">&larr; Back to Dashboard</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><strong>AI Learning and Study Assistant</strong></p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+attempt_id,student_label,subject,quiz_date,total_questions,correct_answers,score_percentage
+1,Sample Student A,Python,2025-01-10 09:30,6,5,83.3
+2,Sample Student B,NumPy,2025-01-12 14:15,4,3,75.0
+3,Sample Student A,Pandas,2025-01-15 10:00,4,3,75.0
+4,Sample Student C,HTML,2025-01-18 11:45,4,4,100.0
+5,Sample Student B,CSS,2025-01-20 16:00,4,2,50.0
+6,Sample Student A,SQL,2025-01-22 09:00,3,2,66.7
+7,Sample Student C,Java,2025-01-25 13:30,2,2,100.0
+8,Sample Student B,DSA,2025-01-28 10:15,5,3,60.0
+9,Sample Student A,OOP,2025-02-01 11:00,2,2,100.0
+10,Sample Student C,AI,2025-02-05 14:00,3,2,66.7
+11,Anonymous Student,OS,2026-10-14 12:21,3,0,0.0
+12,Anonymous Student,CSS,2026-10-14 14:54,4,2,50.0

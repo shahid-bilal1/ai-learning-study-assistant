@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Learning Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand"><span>AI</span> Learning Assistant</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}" class="active">Dashboard</a></li>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('notes') }}">Notes</a></li>
+            <li><a href="{{ url_for('quizzes') }}">Quizzes</a></li>
+            <li><a href="{{ url_for('performance') }}">Performance</a></li>
+            <li><a href="{{ url_for('ai_support') }}">AI Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Your Learning Dashboard</h1>
+        <p class="dashboard-subtitle">Your personal space to explore, practice, and improve your learning.</p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">&#128218;</div>
+            <h3 class="feature-title">Courses</h3>
+            <p class="feature-description">Explore available courses, subjects, and learning topics.</p>
+            <a href="{{ url_for('courses') }}" class="btn btn-blue btn-sm">Explore Courses</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">&#128221;</div>
+            <h3 class="feature-title">Study Notes</h3>
+            <p class="feature-description">Read organized notes and review important concepts.</p>
+            <a href="{{ url_for('notes') }}" class="btn btn-blue btn-sm">View Notes</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">&#10004;</div>
+            <h3 class="feature-title">Quizzes</h3>
+            <p class="feature-description">Test your knowledge with multiple-choice questions.</p>
+            <a href="{{ url_for('quizzes') }}" class="btn btn-blue btn-sm">Start Quiz</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">&#128200;</div>
+            <h3 class="feature-title">Performance Analysis</h3>
+            <p class="feature-description">Understand your quiz results through numerical analysis and visual charts.</p>
+            <a href="{{ url_for('performance') }}" class="btn btn-blue btn-sm">View Performance</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">&#129302;</div>
+            <h3 class="feature-title">AI Study Support</h3>
+            <p class="feature-description">Ask educational questions and receive Python-powered study assistance.</p>
+            <a href="{{ url_for('ai_support') }}" class="btn btn-blue btn-sm">Get Study Support</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><strong>AI Learning and Study Assistant</strong></p>
+    </footer>
+
+</body>
+</html>

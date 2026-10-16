@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance - AI Learning Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand"><span>AI</span> Learning Assistant</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('notes') }}">Notes</a></li>
+            <li><a href="{{ url_for('quizzes') }}">Quizzes</a></li>
+            <li><a href="{{ url_for('performance') }}" class="active">Performance</a></li>
+            <li><a href="{{ url_for('ai_support') }}">AI Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title">Performance Analysis</h1>
+        <p class="page-subtitle">Track and understand your quiz results with data analysis and visual charts</p>
+
+        {% if stats.is_sample and stats.has_data %}
+        <div class="sample-data-notice">
+            &#9888; The data shown below is sample demonstration data. Take a quiz to see your real performance.
+        </div>
+        {% endif %}
+
+        {% if not stats.has_data %}
+        <div class="no-data-message">
+            <p>No performance data available yet.</p>
+            <p>Take a quiz to start tracking your progress!</p>
+            <div class="mt-20">
+                <a href="{{ url_for('quizzes') }}" class="btn btn-blue btn-sm">Start a Quiz</a>
+            </div>
+        </div>
+        {% else %}
+
+        <div class="performance-stats-grid">
+            <div class="perf-stat-card">
+                <div class="perf-stat-value">{{ stats.total_quizzes }}</div>
+                <div class="perf-stat-label">Total Quizzes</div>
+            </div>
+            <div class="perf-stat-card">
+                <div class="perf-stat-value">{{ "%.1f"|format(stats.average_score) }}%</div>
+                <div class="perf-stat-label">Average Score</div>
+            </div>
+            <div class="perf-stat-card">
+                <div class="perf-stat-value">{{ "%.1f"|format(stats.highest_score) }}%</div>
+                <div class="perf-stat-label">Highest Score</div>
+            </div>
+            <div class="perf-stat-card">
+                <div class="perf-stat-value">{{ "%.1f"|format(stats.lowest_score) }}%</div>
+                <div class="perf-stat-label">Lowest Score</div>
+            </div>
+            <div class="perf-stat-card">
+                <div class="perf-stat-value">{{ stats.total_correct }}</div>
+                <div class="perf-stat-label">Total Correct</div>
+            </div>
+            <div class="perf-stat-card">
+                <div class="perf-stat-value">{{ stats.total_questions_answered }}</div>
+                <div class="perf-stat-label">Questions Answered</div>
+            </div>
+        </div>
+
+        {% if stats.subject_stats %}
+        <h2 class="sub-heading">Subject-wise Performance</h2>
+        <table class="subject-performance-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Average</th>
+                    <th>Highest</th>
+                    <th>Lowest</th>
+                    <th>Attempts</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subj in stats.subject_stats %}
+                <tr>
+                    <td><strong>{{ subj.subject }}</strong></td>
+                    <td>{{ "%.1f"|format(subj.average) }}%</td>
+                    <td>{{ "%.1f"|format(subj.highest) }}%</td>
+                    <td>{{ "%.1f"|format(subj.lowest) }}%</td>
+                    <td>{{ subj.attempts }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        <div class="charts-section">
+            {% if charts.scores_chart %}
+            <div class="chart-container">
+                <h3 class="chart-title">Quiz Scores Across Attempts (Matplotlib)</h3>
+                <img src="{{ url_for('static', filename='charts/scores_chart.png') }}" alt="Scores Chart" class="chart-img">
+            </div>
+            {% endif %}
+
+            {% if charts.subject_chart %}
+            <div class="chart-container">
+                <h3 class="chart-title">Average Performance by Subject (Seaborn)</h3>
+                <img src="{{ url_for('static', filename='charts/subject_chart.png') }}" alt="Subject Chart" class="chart-img">
+            </div>
+            {% endif %}
+        </div>
+
+        {% if stats.recent_results %}
+        <h2 class="sub-heading mt-30">Recent Quiz Results</h2>
+        <ul class="recent-results-list">
+            {% for result in stats.recent_results %}
+            <li class="recent-result-item">
+                <div>
+                    <strong>{{ result.subject }}</strong>
+                    <span class="text-muted"> &mdash; {{ result.date }}</span>
+                </div>
+                <div>
+                    <span class="text-muted">{{ result.label }}</span>
+                </div>
+                <div>
+                    <strong class="result-percentage">{{ result.score }}%</strong>
+                    <span class="text-muted">({{ result.correct }}/{{ result.total }})</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% endif %}
+
+        <div class="text-center mt-30">
+            <a href="{{ url_for('quizzes') }}" class="btn btn-blue btn-sm">Take a Quiz</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline btn-sm">&larr; Back to Dashboard</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><strong>AI Learning and Study Assistant</strong></p>
+    </footer>
+
+</body>
+</html>

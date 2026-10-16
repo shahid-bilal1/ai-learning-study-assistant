@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes - AI Learning Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand"><span>AI</span> Learning Assistant</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('notes') }}" class="active">Notes</a></li>
+            <li><a href="{{ url_for('quizzes') }}">Quizzes</a></li>
+            <li><a href="{{ url_for('performance') }}">Performance</a></li>
+            <li><a href="{{ url_for('ai_support') }}">AI Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title">Study Notes</h1>
+        <p class="page-subtitle">Organized notes to help you review important concepts</p>
+
+        {% if subjects %}
+        <div class="filter-bar">
+            {% if not current_subject %}
+            <a href="{{ url_for('notes') }}" class="filter-btn active">All Subjects</a>
+            {% else %}
+            <a href="{{ url_for('notes') }}" class="filter-btn">All Subjects</a>
+            {% endif %}
+
+            {% for subject in subjects %}
+            {% if current_subject == subject %}
+            <a href="{{ url_for('notes', subject=subject) }}" class="filter-btn active">{{ subject }}</a>
+            {% else %}
+            <a href="{{ url_for('notes', subject=subject) }}" class="filter-btn">{{ subject }}</a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if notes %}
+        <div class="notes-wrapper">
+            {% for note in notes %}
+            <div class="note-card">
+                <div class="note-meta">
+                    <span class="note-badge">{{ note.subject }}</span>
+                    <span class="note-badge">{{ note.topic }}</span>
+                </div>
+                <h3 class="note-title">{{ note.title }}</h3>
+                <div class="note-content">{{ note.content }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-data-message">
+            <p>No notes available at the moment.</p>
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-30">
+            <a href="{{ url_for('courses') }}" class="btn btn-outline btn-sm">View Courses</a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-blue btn-sm">&larr; Back to Dashboard</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><strong>AI Learning and Study Assistant</strong></p>
+    </footer>
+
+</body>
+</html>

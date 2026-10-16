@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Support - AI Learning Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand"><span>AI</span> Learning Assistant</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('notes') }}">Notes</a></li>
+            <li><a href="{{ url_for('quizzes') }}">Quizzes</a></li>
+            <li><a href="{{ url_for('performance') }}">Performance</a></li>
+            <li><a href="{{ url_for('ai_support') }}" class="active">AI Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <div class="ai-support-container">
+            <h1 class="page-title">AI Study Support</h1>
+            <p class="page-subtitle">Ask educational questions and receive study assistance</p>
+
+            <div class="ai-intro-box">
+                <p>
+                    <strong>How it works:</strong> This is a rule-based educational assistant powered by Python.
+                    It matches your question keywords against a predefined database to provide helpful answers.
+                    Try asking about Python, NumPy, Pandas, HTML, CSS, C++, Java, SQL, Data Structures,
+                    Algorithms, OOP, AI, Networking, or Operating Systems.
+                </p>
+            </div>
+
+            <div class="ai-form-area">
+                <form method="POST" action="{{ url_for('ai_support') }}">
+                    <label class="ai-input-label" for="question">Ask your study question:</label>
+                    <textarea name="question" id="question" class="ai-text-input" rows="3" placeholder="e.g., What is a NumPy array?">{{ question }}</textarea>
+                    <button type="submit" class="btn btn-blue ai-submit-btn">Get Answer &rarr;</button>
+                </form>
+            </div>
+
+            {% if answer %}
+            {% if answer.matched %}
+            <div class="ai-answer-box matched">
+                <span class="ai-answer-topic">{{ answer.topic }}</span>
+                {% if question %}
+                <div class="ai-question-display"><strong>Your question:</strong> {{ question }}</div>
+                {% endif %}
+                <div class="ai-answer-text">{{ answer.answer }}</div>
+            </div>
+            {% else %}
+            <div class="ai-answer-box not-matched">
+                <span class="ai-answer-topic">{{ answer.topic }}</span>
+                {% if question %}
+                <div class="ai-question-display"><strong>Your question:</strong> {{ question }}</div>
+                {% endif %}
+                <div class="ai-answer-text">{{ answer.answer }}</div>
+            </div>
+            {% endif %}
+            {% endif %}
+
+            <div class="mt-30">
+                <p class="suggestion-label">Try asking about:</p>
+                <div class="suggestion-chips">
+                    <span class="suggestion-chip">Python</span>
+                    <span class="suggestion-chip">NumPy arrays</span>
+                    <span class="suggestion-chip">Pandas DataFrame</span>
+                    <span class="suggestion-chip">HTML</span>
+                    <span class="suggestion-chip">CSS</span>
+                    <span class="suggestion-chip">C++</span>
+                    <span class="suggestion-chip">Java</span>
+                    <span class="suggestion-chip">SQL</span>
+                    <span class="suggestion-chip">Data Structures</span>
+                    <span class="suggestion-chip">Algorithms</span>
+                    <span class="suggestion-chip">OOP</span>
+                    <span class="suggestion-chip">AI</span>
+                    <span class="suggestion-chip">Networking</span>
+                    <span class="suggestion-chip">Operating Systems</span>
+                </div>
+            </div>
+
+            <div class="text-center mt-30">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline btn-sm">&larr; Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><strong>AI Learning and Study Assistant</strong></p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+question_id,subject,topic,question,option_a,option_b,option_c,option_d,correct_answer
+1,Python,Basics,What is the correct way to create a variable in Python?,var x = 5,int x = 5,x = 5,declare x = 5,C
+2,Python,Data Types,Which data type stores decimal numbers?,int,float,str,bool,B
+3,Python,Loops,Which loop iterates over a sequence?,while,do-while,for,repeat,C
+4,Python,Functions,Which keyword defines a function in Python?,function,func,define,def,D
+5,Python,Data Types,What is the output of type(5.5)?,int,float,double,number,B
+6,Python,Operators,What does 10 // 3 return?,3.33,3,4,3.0,B
+7,NumPy,Arrays,How do you import NumPy?,import np,import numpy as np,using numpy,include numpy,B
+8,NumPy,Arrays,Which creates a NumPy array from a list?,np.list(),np.make(),np.array(),np.create(),C
+9,NumPy,Operations,What does np.mean() calculate?,Median,Mode,Average,Maximum,C
+10,NumPy,Arrays,What does arr.shape return?,Size,Dimensions,Length,Type,B
+11,Pandas,DataFrames,How to read a CSV file in Pandas?,pd.open_csv(),pd.read_csv(),pd.load_csv(),pd.import_csv(),B
+12,Pandas,DataFrames,What does df.head() show?,Last 5 rows,First 5 rows,All rows,Random rows,B
+13,Pandas,Data Selection,How to select a column named 'Name'?,df.get('Name'),df['Name'],df.column('Name'),df.select('Name'),B
+14,Pandas,Missing Data,Which method removes missing values?,df.remove(),df.dropna(),df.clean(),df.delete(),B
+15,Matplotlib,Plots,Which function creates a line plot?,plt.bar(),plt.scatter(),plt.plot(),plt.line(),C
+16,Matplotlib,Plots,How to add a title to a plot?,plt.name(),plt.title(),plt.heading(),plt.label(),B
+17,Matplotlib,Plots,How to save a plot as an image?,plt.save(),plt.savefig(),plt.export(),plt.image(),B
+18,Seaborn,Plots,Seaborn is built on top of which library?,NumPy,Pandas,Matplotlib,Flask,C
+19,Seaborn,Plots,Which function creates a bar plot in Seaborn?,sns.bar(),sns.barplot(),sns.chart(),sns.plot(),B
+20,Flask,Routes,What does @app.route('/') do?,Imports module,Maps URL to function,Creates database,Defines variable,B
+21,Flask,Templates,Which function renders an HTML template?,show_template(),render_template(),display(),load_html(),B
+22,Flask,Methods,Which HTTP method is used for form submissions?,GET,POST,PUT,DELETE,B
+23,HTML,Structure,Which tag defines the largest heading?,<h6>,<h1>,<head>,<header>,B
+24,HTML,Elements,Which tag creates a hyperlink?,<link>,<href>,<a>,<url>,C
+25,HTML,Forms,Which attribute specifies where form data is sent?,method,action,target,src,B
+26,HTML,Media,Which tag embeds an image?,<pic>,<image>,<img>,<src>,C
+27,CSS,Selectors,Which symbol selects an ID?,.,#,*,@,B
+28,CSS,Selectors,Which symbol selects a class?,.,#,*,@,A
+29,CSS,Layout,Which property makes an element a flex container?,display: flex,layout: flex,flex: true,position: flex,A
+30,CSS,Box Model,Which property controls space inside an element?,margin,padding,border,spacing,B
+31,C,Basics,Which header file is needed for printf()?,stdlib.h,stdio.h,conio.h,string.h,B
+32,C,Basics,What is the extension of C source files?,.cpp,.java,.c,.py,C
+33,C,Memory,Which operator gives the address of a variable?,&,*,@,%,A
+34,C++,OOP,What is a class in C++?,A variable,A blueprint for objects,A function,A loop,B
+35,C++,OOP,Which concept allows a class to inherit from another?,Encapsulation,Polymorphism,Inheritance,Abstraction,C
+36,Java,Basics,Which keyword creates a class in Java?,def,class,function,struct,B
+37,Java,OOP,Java is a ___ language?,Procedural,Object-oriented,Functional,Assembly,B
+38,JavaScript,Basics,Which keyword declares a constant in JavaScript?,var,let,const,static,C
+39,JavaScript,DOM,Which method selects an element by ID?,getElement(),getElementById(),selectId(),findById(),B
+40,SQL,Basics,Which statement retrieves data from a database?,GET,SELECT,FETCH,RETRIEVE,B
+41,SQL,Basics,Which clause filters records in SQL?,FILTER,WHERE,HAVING,LIMIT,B
+42,SQL,Operations,Which command adds a new record?,ADD,INSERT,CREATE,PUT,B
+43,DSA,Arrays,What is the time complexity of accessing an array element?,O(n),O(1),O(log n),O(n²),B
+44,DSA,Linked List,In a singly linked list each node has?,Only data,Data and next pointer,Data and previous pointer,Both pointers,B
+45,DSA,Sorting,Which sorting algorithm has best average time complexity?,Bubble Sort,Quick Sort,Selection Sort,Insertion Sort,B
+46,DSA,Stack,Stack follows which principle?,FIFO,LIFO,Random,Priority,B
+47,DSA,Queue,Queue follows which principle?,FIFO,LIFO,Random,Priority,A
+48,OOP,Concepts,Which OOP concept hides data?,Inheritance,Polymorphism,Encapsulation,Abstraction,C
+49,OOP,Concepts,Which concept allows same method name with different behavior?,Encapsulation,Inheritance,Polymorphism,Abstraction,C
+50,OS,Basics,What manages hardware and software resources?,Compiler,Operating System,Database,Browser,B
+51,OS,Processes,A process is?,A file,A program in execution,A folder,A command,B
+52,OS,Memory,Which is faster?,Hard Disk,RAM,CPU Register,Cache,C
+53,Networking,Basics,HTTP stands for?,HyperText Transfer Protocol,High Transfer Text Protocol,Hyper Transfer Text Program,Home Transfer Protocol,A
+54,Networking,OSI,How many layers in OSI model?,5,6,7,8,C
+55,Networking,Protocols,Which protocol is used to send emails?,HTTP,FTP,SMTP,TCP,C
+56,AI,Basics,AI stands for?,Advanced Internet,Artificial Intelligence,Auto Interface,Applied Information,B
+57,AI,ML,ML stands for?,Multi Learning,Machine Learning,Modern Logic,Micro Language,B
+58,AI,Types,Which is a type of Machine Learning?,Supervised,Unsupervised,Reinforcement,All of these,D
+59,Cybersecurity,Basics,CIA in cybersecurity stands for?,Central Intelligence Agency,Confidentiality Integrity Availability,Computer Internet Access,Code Instruction Algorithm,B
+60,Cybersecurity,Threats,Which attack floods a server with requests?,Phishing,DDoS,SQL Injection,Malware,B

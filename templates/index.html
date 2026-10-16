@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning and Study Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">AI Learning and Study Assistant</h1>
+            <p class="hero-tagline">Learn Smarter. Practice Better. Understand Your Progress.</p>
+            <p class="hero-description">
+                Welcome to AI Learning and Study Assistant, a student-focused educational platform
+                designed to make learning organized, interactive, and effective. Explore courses,
+                read study notes, test your knowledge with quizzes, analyze your performance, and
+                receive basic AI-powered study support in one convenient place.
+            </p>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg">Start Project &rarr;</a>
+        </div>
+    </section>
+
+   <section class="team-section">
+    <h2 class="section-title">Meet Our Team</h2>
+    <p class="section-subtitle">The students behind this project</p>
+
+    <div class="team-grid">
+        <!-- Shahid Bilal -->
+        <div class="team-card">
+            <img src="https://shahidbilal.vercel.app/photo.png" alt="Shahid Bilal" class="team-avatar">
+            <h3 class="team-name">Shahid Bilal</h3>
+            <p class="team-role">Project Team Member</p>
+            <a href="https://shahidbilal.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Portfolio</a>
+        </div>
+
+        <!-- Owais Qayoom -->
+        <div class="team-card">
+            <img src="https://owaisqayoom1.vercel.app/image.png" alt="Owais Qayoom" class="team-avatar">
+            <h3 class="team-name">Owais Qayoom</h3>
+            <p class="team-role">Project Team Member</p>
+            <a href="https://owaisqayoom1.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Portfolio</a>
+        </div>
+
+        <!-- Musaib Reyaz -->
+        <div class="team-card">
+            <img src="https://musaibreyaz1.vercel.app/img.png" alt="Musaib Reyaz" class="team-avatar">
+            <h3 class="team-name">Musaib Reyaz</h3>
+            <p class="team-role">Project Team Member</p>
+            <a href="https://musaibreyaz1.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Portfolio</a>
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <p><strong>AI Learning and Study Assistant</strong> &mdash; </p>
+        <p>Developed by Shahid Bilal, Owais Qayoom and Musaib Reyaz</p>
+    </footer>
+
+</body>
+</html>
