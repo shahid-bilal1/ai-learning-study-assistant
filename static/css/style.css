@@ -106,7 +106,7 @@ body {
     background: linear-gradient(135deg, var(--deep-blue), var(--primary-blue), #3B82F6);
     background-size: 200% 200%;
     animation: gradientMove 8s ease infinite;
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
